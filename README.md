@@ -1,8 +1,6 @@
 # Youtubr
 
-Yet another amazing AngularJS app
-
-## Getting Started
+Check http://youtubr.xyz for the latest release!
 
 ## Documentation
 _(Coming soon)_
