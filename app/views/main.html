@@ -3,7 +3,7 @@
     <div class="row"> <!-- 2-3: Video title & URL/Buttons --> 
       <div class="col-sm-8 h3 videoTitle"> <!-- 2: Video Title -->
         <a href="https://www.youtube.com/watch?v=bLlj_GeKniA" target="_blank">
-          Julia Stiles in Ghostwriter ("Who is Max Mouse?")
+          {{videoTitle || 'Loading...'}}
         </a>
       </div> 
       <div class="col-sm-4 hidden"> <!-- 3: Sharable shortURL -->
@@ -20,9 +20,9 @@
     
     <div class="row"> <!-- 4: Youtube iFrame embed --> 
       <div class="col-sm-12">
-        <div class="videoWrapper ">
-          <iframe width="420" height="315" src="//www.youtube.com/embed/bLlj_GeKniA?rel=0" frameborder="0" allowfullscreen>
-          </iframe>
+        <div class="videoWrapper">
+          <div id="videoDiv">
+          </div>
         </div>
       </div>
     </div>
