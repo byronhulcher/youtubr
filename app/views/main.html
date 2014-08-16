@@ -1,5 +1,5 @@
 <div>
-  <form name="editorForm" class="container"> <!-- 2-8: Content -->    
+  <form id="editor-form" name="editorForm" class="container"> <!-- 2-8: Content -->    
     <div class="row"> <!-- 2-3: Video title & URL/Buttons --> 
       <div class="col-sm-8 h3 videoTitle"> <!-- 2: Video Title -->
         <a href="https://www.youtube.com/watch?v={{videoData.youtubeId}}" target="_blank" ng-show="videoTitle">
@@ -11,7 +11,7 @@
         <input class="form-control" name="shortURL" value="http://youtubr.xyz/#/{{videoId}}" readonly></input>
       </div>
       <div class="col-sm-2" ng-show="editorForm.$dirty"><!-- 3: Save button --> 
-        <a class="btn btn-success btn-block col-sm-2">Save</a> 
+        <a class="btn btn-success btn-block col-sm-2" ng-click="save()">Save</a> 
       </div>
       
       <div class="col-sm-2" ng-show="editorForm.$dirty"><!-- 3: Reset button --> 

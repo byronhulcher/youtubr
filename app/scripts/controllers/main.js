@@ -6,14 +6,17 @@ angular.module('byronhulcher.Youtubr')
 
     $scope.$path = $location.path.bind($location);
     $scope.videoId;
-    $scope.videoData;
-    $scope.player;
+    $scope.editorForm;
 
     $rootScope.$on('$routeChangeSuccess', function(){
       $scope.videoId = $routeParams.videoId;
-      VideoService.get($scope.videoId, function(data){
-        $scope.videoData = data;
-      }); 
+      VideoService.get($scope.videoId, 
+        function(data){
+          $scope.videoData = data;
+        },
+        function(data){
+          $location.path("/example");
+        });
     });
 
     function onPlayerStateChange(event){
@@ -59,7 +62,7 @@ angular.module('byronhulcher.Youtubr')
     })
 
     function loadPlayer(){
-      if (!angular.isDefined($scope.player) || !angular.isDefined($scope.videoData.youtubeId)) return;
+      if (!angular.isDefined($scope.player) || !angular.isDefined($scope.player.loadVideoById) || !angular.isDefined($scope.videoData.youtubeId)) return;
       $scope.player.loadVideoById({
         'videoId': $scope.videoData.youtubeId,
         'startSeconds': $scope.videoData.startSeconds, 
@@ -94,4 +97,13 @@ angular.module('byronhulcher.Youtubr')
         loadPlayer();
       }
     });
+
+    $scope.save = function(){
+      VideoService.create($scope.videoData, function(data){
+        console.log($scope);
+        $scope.videoData = data;
+        $scope.videoId = data.id;
+        angular.element('#editor-form').scope().editorForm.$setPristine();
+      })
+    }
   });
