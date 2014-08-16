@@ -24,7 +24,6 @@ angular.module('byronhulcher.Youtubr')
         startPlayerInterval();
         $scope.videoTitle = $scope.player.getVideoData().title;
         $scope.videoDuration = parseInt($scope.player.getDuration());
-        // console.log($scope.videoDuration);
       }
       else {
         stopPlayerInterval();
@@ -59,13 +58,22 @@ angular.module('byronhulcher.Youtubr')
       stopPlayerInterval();
     })
 
+    function loadPlayer(){
+      if (!angular.isDefined($scope.player) || !angular.isDefined($scope.videoData.youtubeId)) return;
+      $scope.player.loadVideoById({
+        'videoId': $scope.videoData.youtubeId,
+        'startSeconds': $scope.videoData.startSeconds, 
+        'endSeconds': $scope.videoData.endSeconds
+      });
+    };
+
     $rootScope.$on('onYouTubeIframeAPIReady', function(){
       $scope.player = new YT.Player('videoDiv', {
         width: '420',
         height: '315',
         // videoId: $scope.videoData.youtubeId,
         events: {
-          'onReady': function(){$rootScope.$broadcast('onPlayerReady');},
+          'onReady': loadPlayer,
           'onStateChange': onPlayerStateChange,
         },
         playerVars: {
@@ -79,28 +87,11 @@ angular.module('byronhulcher.Youtubr')
       });  
     });
 
-    function loadPlayer(){
-      if (!angular.isDefined($scope.player)) return;
-      
-      $scope.player.loadVideoById({
-        'videoId': $scope.videoData.youtubeId,
-        'startSeconds': $scope.videoData.startSeconds, 
-        'endSeconds': $scope.videoData.endSeconds
-      });
-    };
-
-    $rootScope.$on('onPlayerReady', function(){
-      loadPlayer();
-    });
-
     $scope.$watch('videoData.youtubeUrl', function(newValue, oldValue){
       if (angular.isDefined(newValue) && (newValue != oldValue)){
-        console.log("you changed it!", newValue, oldValue);
-        delete $scope.videoId;
+        if (angular.isDefined(oldValue)) delete $scope.videoId;
         $scope.videoData.youtubeId = getParameterByName($scope.videoData.youtubeUrl, 'v');
         loadPlayer();
       }
-
     });
-
   });
