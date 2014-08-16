@@ -31,6 +31,9 @@
     }
     .videoTitle {
       margin: 0;
+      /*text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;*/
     }
 
     .progress {
@@ -56,7 +59,9 @@
     
     <div class="row"> <!-- 2-3: Video title & URL/Buttons --> 
       <div class="col-sm-8 h3 videoTitle"> <!-- 2: Video Title -->
-        Julia Stiles in Ghostwriter ("Who is Max Mouse?")
+        <a href="https://www.youtube.com/watch?v=bLlj_GeKniA" target="_blank">
+          Julia Stiles in Ghostwriter ("Who is Max Mouse?")
+        </a>
       </div> 
       <div class="col-sm-4 hidden"> <!-- 3: Sharable shortURL -->
         <input class="form-control" name="shortURL"></input>
