@@ -8,7 +8,7 @@ angular.module('byronhulcher.Youtubr')
     $scope.videoId;
     $scope.editorForm;
 
-    $rootScope.$on('$routeChangeSuccess', function(){
+    var getVideo = function(){
       $scope.videoId = $routeParams.videoId;
       VideoService.get($scope.videoId, 
         function(data){
@@ -17,7 +17,9 @@ angular.module('byronhulcher.Youtubr')
         function(data){
           $location.path("/example");
         });
-    });
+    }
+
+    $rootScope.$on('$routeChangeSuccess', getVideo);
 
     function onPlayerStateChange(event){
       if (event.data == 0){
@@ -106,4 +108,6 @@ angular.module('byronhulcher.Youtubr')
         angular.element('#editor-form').scope().editorForm.$setPristine();
       })
     }
+
+    $scope.reset = getVideo;
   });
