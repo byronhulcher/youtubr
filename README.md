@@ -2,7 +2,9 @@
 
 Check http://youtubr.xyz for the latest release!
 
-![alt text](https://i.imgur.com/8aZqa6Z.jpg "Logo Title Text 1")
+![alt text](https://i.imgur.com/8aZqa6Z.jpg "Napkin drawing")
+
+![alt text](http://i.imgur.com/QIr6GH7.png "Static mock-up")
 
 ## Relevant Technologies
 * Angular JS - http://docs.angularjs.org/api 
