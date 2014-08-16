@@ -17,3 +17,12 @@ angular.module('byronhulcher.Youtubr', ['ngAnimate', 'ngCookies', 'ngResource', 
       });
   });
 
+
+function onYouTubeIframeAPIReady() {
+  console.log('onYouTubeIframeAPIReady');
+}
+
+function onPlayerReady(event) {
+  console.log('onPlayerReady');
+  // event.target.playVideo();
+}
