@@ -12,12 +12,6 @@ angular.module('byronhulcher.Youtubr', ['ngAnimate', 'ngCookies', 'ngResource', 
       .when('/', {
         templateUrl: 'views/home.html'
       })
-      .when('/features', {
-        templateUrl: 'views/features.html'
-      })
-      .when('/contact', {
-        templateUrl: 'views/contact.html'
-      })
       .otherwise({
         redirectTo: '/'
       });
