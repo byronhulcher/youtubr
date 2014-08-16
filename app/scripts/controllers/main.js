@@ -2,9 +2,9 @@
 
 angular.module('byronhulcher.Youtubr')
 
-  .controller('MainCtrl', function($scope, $location, version) {
+  .controller('MainCtrl', function($scope, $location, VideoService) {
 
     $scope.$path = $location.path.bind($location);
-    $scope.version = version;
+    
 
   });
