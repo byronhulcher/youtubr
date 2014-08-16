@@ -7,7 +7,6 @@ angular.module('byronhulcher.Youtubr')
     $scope.$path = $location.path.bind($location);
     $scope.videoId;
     $scope.videoData;
-    $scope.videoTitle;
     $scope.player;
 
     $rootScope.$on('$routeChangeSuccess', function(){
@@ -24,6 +23,8 @@ angular.module('byronhulcher.Youtubr')
       if (event.data == 1){
         startPlayerInterval();
         $scope.videoTitle = $scope.player.getVideoData().title;
+        $scope.videoDuration = parseInt($scope.player.getDuration());
+        // console.log($scope.videoDuration);
       }
       else {
         stopPlayerInterval();
