@@ -15,7 +15,17 @@ Check http://youtubr.xyz for the latest release!
 * Yeoman - http://yeoman.io/
 
 ## Documentation
-_(Coming soon)_
+API endpoints
+```
+POST /video
+	requires: {youtubeURL: string}
+	optional: {startSeconds: int, endSeconds: int}
+	action: Creates a new video object using the supplied parameters
+	returns: new video object or 400
+
+GET /video/<video_id>
+	returns: video object matching video ID or 404
+```
 
 ## Examples
 _(Coming soon)_
