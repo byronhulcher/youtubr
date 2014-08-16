@@ -1,5 +1,10 @@
 'use strict';
 
+function getParameterByName(url, name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(url);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
 angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', function($log) {
   var localVideos = {
     'example': {
@@ -25,7 +30,9 @@ angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', function
       errorCallback("Unable to find video matching id "+id.toString())
     }
     else {
-      successCallback(angular.copy(localVideos[id]));
+      var data = angular.copy(localVideos[id]);
+      data.youtubeId = getParameterByName(data.youtubeUrl, 'v');
+      successCallback(data);
     }
     
   };

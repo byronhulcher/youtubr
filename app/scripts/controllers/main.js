@@ -63,7 +63,7 @@ angular.module('byronhulcher.Youtubr')
       $scope.player = new YT.Player('videoDiv', {
         width: '420',
         height: '315',
-        videoId: 'bLlj_GeKniA',
+        // videoId: $scope.videoData.youtubeId,
         events: {
           'onReady': function(){$rootScope.$broadcast('onPlayerReady');},
           'onStateChange': onPlayerStateChange,
@@ -79,9 +79,10 @@ angular.module('byronhulcher.Youtubr')
       });  
     });
 
+
     $rootScope.$on('onPlayerReady', function(){
       $scope.player.loadVideoById({
-        'videoId': 'bLlj_GeKniA', 
+        'videoId': $scope.videoData.youtubeId,
         'startSeconds': $scope.videoData.startSeconds, 
         'endSeconds': $scope.videoData.endSeconds
       });

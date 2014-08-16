@@ -2,18 +2,19 @@
   <form name="editorForm" class="container"> <!-- 2-8: Content -->    
     <div class="row"> <!-- 2-3: Video title & URL/Buttons --> 
       <div class="col-sm-8 h3 videoTitle"> <!-- 2: Video Title -->
-        <a href="https://www.youtube.com/watch?v=bLlj_GeKniA" target="_blank">
-          {{videoTitle || 'Loading...'}}
+        <a href="https://www.youtube.com/watch?v={{videoData.youtubeId}}" target="_blank" ng-show="videoTitle">
+          {{videoTitle}}
         </a>
+        <div ng-hide="videoTitle">Loading...</div>
       </div> 
-      <div class="col-sm-4 hidden"> <!-- 3: Sharable shortURL -->
-        <input class="form-control" name="shortURL"></input>
+      <div class="col-sm-4"> <!-- 3: Sharable shortURL -->
+        <input class="form-control" name="shortURL" value="http://youtubr.xyz/#/{{videoId}}" readonly></input>
       </div>
-      <div class="col-sm-2"><!-- 3: Save button --> 
+      <div class="col-sm-2 hidden"><!-- 3: Save button --> 
         <a class="btn btn-success btn-block col-sm-2">Save</a> 
       </div>
       
-      <div class="col-sm-2"><!-- 3: Reset button --> 
+      <div class="col-sm-2 hidden"><!-- 3: Reset button --> 
         <a class="btn btn-danger btn-block col-sm-2">Reset</a> 
       </div>
     </div>
@@ -49,7 +50,7 @@
       </div>
 
       <div class="col-sm-6"> <!-- 7: youtube link input -->
-        <input class="form-control" ng-model-options="{updateOn: 'blur'}" name="youtubeUrl" value="https://www.youtube.com/watch?v=bLlj_GeKniA"></input>
+        <input class="form-control" ng-model-options="{updateOn: 'blur'}" name="youtubeUrl" ng-model="videoData.youtubeUrl"></input>
       </div>
 
       <div class="col-sm-3"> <!-- 8: end time in seconds -->
