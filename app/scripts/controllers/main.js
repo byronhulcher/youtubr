@@ -79,13 +79,28 @@ angular.module('byronhulcher.Youtubr')
       });  
     });
 
-
-    $rootScope.$on('onPlayerReady', function(){
+    function loadPlayer(){
+      if (!angular.isDefined($scope.player)) return;
+      
       $scope.player.loadVideoById({
         'videoId': $scope.videoData.youtubeId,
         'startSeconds': $scope.videoData.startSeconds, 
         'endSeconds': $scope.videoData.endSeconds
       });
+    };
+
+    $rootScope.$on('onPlayerReady', function(){
+      loadPlayer();
+    });
+
+    $scope.$watch('videoData.youtubeUrl', function(newValue, oldValue){
+      if (angular.isDefined(newValue) && (newValue != oldValue)){
+        console.log("you changed it!", newValue, oldValue);
+        delete $scope.videoId;
+        $scope.videoData.youtubeId = getParameterByName($scope.videoData.youtubeUrl, 'v');
+        loadPlayer();
+      }
+
     });
 
   });

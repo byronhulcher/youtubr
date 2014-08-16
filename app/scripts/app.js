@@ -21,3 +21,8 @@ function onYouTubeIframeAPIReady() {
   var appRootScope = angular.element('#app-container').scope();
   appRootScope.$broadcast('onYouTubeIframeAPIReady');
 }
+
+function getParameterByName(url, name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(url);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
