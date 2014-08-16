@@ -2,6 +2,8 @@
 
 Check http://youtubr.xyz for the latest release!
 
+![alt text](https://i.imgur.com/8aZqa6Z.jpg "Logo Title Text 1")
+
 ## Relevant Technologies
 * Angular JS - http://docs.angularjs.org/api 
 * Bootstrap CSS - http://getbootstrap.com/
