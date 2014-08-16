@@ -7,14 +7,14 @@
         </a>
         <div ng-hide="videoTitle">Loading...</div>
       </div> 
-      <div class="col-sm-4"> <!-- 3: Sharable shortURL -->
+      <div class="col-sm-4" ng-show="editorForm.$pristine"> <!-- 3: Sharable shortURL -->
         <input class="form-control" name="shortURL" value="http://youtubr.xyz/#/{{videoId}}" readonly></input>
       </div>
-      <div class="col-sm-2 hidden"><!-- 3: Save button --> 
+      <div class="col-sm-2" ng-show="editorForm.$dirty"><!-- 3: Save button --> 
         <a class="btn btn-success btn-block col-sm-2">Save</a> 
       </div>
       
-      <div class="col-sm-2 hidden"><!-- 3: Reset button --> 
+      <div class="col-sm-2" ng-show="editorForm.$dirty"><!-- 3: Reset button --> 
         <a class="btn btn-danger btn-block col-sm-2">Reset</a> 
       </div>
     </div>
@@ -32,13 +32,13 @@
       <div class="col-sm-12">
         <div class="progress">
           <div class="progress-bar progress-bar-warning" style="width: {{(videoData.startSeconds/videoDuration)*100.0}}%">
-            {{videoData.startSeconds | secondsToMinutes}}
+            <!-- {{videoData.startSeconds | secondsToMinutes}} -->
           </div>
           <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: {{((videoData.endSeconds-videoData.startSeconds)/videoDuration)*100.0}}%">
-            {{videoData.endSeconds-videoData.startSeconds | secondsToMinutes}}
+            <!-- {{videoData.endSeconds-videoData.startSeconds | secondsToMinutes}} -->
           </div>
           <div class="progress-bar progress-bar-danger" style="width: {{((videoDuration-videoData.endSeconds)/videoDuration)*100.0}}%">
-            {{videoDuration-videoData.endSeconds | secondsToMinutes}}
+            <!-- {{videoDuration-videoData.endSeconds | secondsToMinutes}} -->
           </div>
         </div>
       </div>
