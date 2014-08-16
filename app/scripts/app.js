@@ -9,12 +9,11 @@ angular.module('byronhulcher.Youtubr', ['ngAnimate', 'ngCookies', 'ngResource', 
     $locationProvider.html5Mode(false);
 
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/home.html'
+      .when('/:videoId', {
+        templateUrl: 'views/main.html'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/test1'
       });
-
   });
 
