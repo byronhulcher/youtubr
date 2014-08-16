@@ -28,4 +28,4 @@ GET /video/<video_id>
 ```
 
 ## Examples
-_(Coming soon)_
+http://youtubr.xyz/#/example

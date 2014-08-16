@@ -13,7 +13,7 @@ angular.module('byronhulcher.Youtubr', ['ngAnimate', 'ngCookies', 'ngResource', 
         templateUrl: 'views/main.html'
       })
       .otherwise({
-        redirectTo: '/test1'
+        redirectTo: '/example'
       });
   });
 
