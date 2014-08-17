@@ -29,3 +29,10 @@ GET /video/<video_id>
 
 ## Examples
 http://youtubr.xyz/#/example
+
+## TODO
+* Cookie Storage
+* Back-end Support
+* Default/blank view
+* Selection bar controls
+* Minutes:Seconds inputs
