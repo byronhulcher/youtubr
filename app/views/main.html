@@ -27,7 +27,8 @@
             </div>
           </div>
           <div class="jumbotron" ng-hide="ready">
-            <h1>LOADING...</h1>
+            <h1 ng-show="refreshing">REFRESHING...</h1>
+            <h1 ng-hide="refreshing">LOADING...</h1>
             <p>Sometimes, YT.player doesn't fire the onReady event...</p>
           </div>
         </div>

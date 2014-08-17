@@ -1,5 +1,5 @@
 angular.module('byronhulcher.Youtubr')
-  .controller('VideoCtrl', function($rootScope, $scope, $interval){
+  .controller('VideoCtrl', function($rootScope, $scope, $interval, $timeout, $route){
     $scope.ready = false;
 
     function onPlayerStateChange(event){
@@ -83,4 +83,11 @@ angular.module('byronhulcher.Youtubr')
         loadPlayer();
       }
     });
+
+    $timeout(function(){
+      if (!$scope.ready) $scope.refreshing=true;
+    }, 2*1000);
+    $timeout(function(){
+      if (!$scope.ready) location.reload();
+    }, 4*1000);
   });
