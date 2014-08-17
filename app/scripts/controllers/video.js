@@ -47,6 +47,7 @@ angular.module('byronhulcher.Youtubr')
     })
 
     function loadPlayer(){
+      console.log("loadingPlayer")
       if (!angular.isDefined($scope.player) || !angular.isDefined($scope.player.loadVideoById) || !angular.isDefined($scope.videoData.youtubeId)) return;
       $scope.player.loadVideoById({
         'videoId': $scope.videoData.youtubeId,
@@ -57,6 +58,7 @@ angular.module('byronhulcher.Youtubr')
     };
 
     $rootScope.$on('onYouTubeIframeAPIReady', function(){
+      console.log("onYouTubeIframeAPIReady")
       $scope.player = new YT.Player('videoDiv', {
         width: '420',
         height: '315',
@@ -87,7 +89,7 @@ angular.module('byronhulcher.Youtubr')
     $timeout(function(){
       if (!$scope.ready) $scope.refreshing=true;
     }, 2*1000);
-    $timeout(function(){
-      if (!$scope.ready) location.reload();
-    }, 4*1000);
+    // $timeout(function(){
+    //   if (!$scope.ready) location.reload();
+    // }, 4*1000);
   });

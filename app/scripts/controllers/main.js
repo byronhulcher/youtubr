@@ -2,7 +2,7 @@
 
 angular.module('byronhulcher.Youtubr')
 
-  .controller('MainCtrl', function($rootScope, $scope, $location, $routeParams, VideoService) {
+  .controller('MainCtrl', function($rootScope, $scope, $location, $routeParams, $route, VideoService) {
 
     $scope.$path = $location.path.bind($location);
     $scope.videoId;
@@ -13,6 +13,7 @@ angular.module('byronhulcher.Youtubr')
 
     var getVideo = function(){
       $scope.videoId = $routeParams.videoId;
+      if (!angular.isDefined($scope.videoId)) return;
       VideoService.get($scope.videoId, 
         function(data){
           $scope.videoData = data;
