@@ -18,8 +18,10 @@ angular.module('byronhulcher.Youtubr', ['ngAnimate', 'ngCookies', 'ngResource', 
   });
 
 function onYouTubeIframeAPIReady() {
-  var appRootScope = angular.element('#app-container').scope();
-  appRootScope.$broadcast('onYouTubeIframeAPIReady');
+  angular.element('#app-container').ready(function(){
+    var appRootScope = angular.element('#app-container').scope();
+    appRootScope.$broadcast('onYouTubeIframeAPIReady');
+  });
 }
 
 function getParameterByName(url, name) {
