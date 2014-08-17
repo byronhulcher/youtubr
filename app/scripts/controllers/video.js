@@ -1,6 +1,44 @@
 angular.module('byronhulcher.Youtubr')
   .controller('VideoCtrl', function($rootScope, $scope, $interval, $timeout, $route){
     $scope.ready = false;
+    
+    $scope.$watch('videoData.youtubeUrl', function(newValue, oldValue){
+      if (angular.isDefined(newValue) && (newValue != oldValue)){
+        if (angular.isDefined(oldValue)) delete $scope.videoId;
+        $scope.videoData.youtubeId = getParameterByName($scope.videoData.youtubeUrl, 'v');
+        loadPlayer();
+      }
+    });
+
+    function loadPlayer(){
+      if (!angular.isDefined($scope.player) || !angular.isDefined($scope.player.loadVideoById) || !angular.isDefined($scope.videoData.youtubeId)) return;
+      $scope.player.loadVideoById({
+        'videoId': $scope.videoData.youtubeId,
+        'startSeconds': $scope.videoData.startSeconds, 
+        'endSeconds': $scope.videoData.endSeconds
+      });
+      $scope.ready = true;
+    };
+
+    $rootScope.$on('onYouTubeIframeAPIReady', function(){
+      $scope.player = new YT.Player('videoDiv', {
+        width: '420',
+        height: '315',
+        // videoId: $scope.videoData.youtubeId,
+        events: {
+          'onReady': loadPlayer,
+          'onStateChange': onPlayerStateChange,
+        },
+        playerVars: {
+          autoplay: 1,
+          // controls: 0,
+          enablejsapi: 1,
+          loop: 1,
+          rel: 0,
+          showinfo: 0,
+        }
+      });  
+    });
 
     function onPlayerStateChange(event){
       if (event.data == 0){
@@ -43,50 +81,12 @@ angular.module('byronhulcher.Youtubr')
 
     $scope.$on('$destroy', function(){
       stopPlayerInterval();
-    })
-
-    function loadPlayer(){
-      if (!angular.isDefined($scope.player) || !angular.isDefined($scope.player.loadVideoById) || !angular.isDefined($scope.videoData.youtubeId)) return;
-      $scope.player.loadVideoById({
-        'videoId': $scope.videoData.youtubeId,
-        'startSeconds': $scope.videoData.startSeconds, 
-        'endSeconds': $scope.videoData.endSeconds
-      });
-      $scope.ready = true;
-    };
-
-    $rootScope.$on('onYouTubeIframeAPIReady', function(){
-      $scope.player = new YT.Player('videoDiv', {
-        width: '420',
-        height: '315',
-        // videoId: $scope.videoData.youtubeId,
-        events: {
-          'onReady': loadPlayer,
-          'onStateChange': onPlayerStateChange,
-        },
-        playerVars: {
-          autoplay: 1,
-          // controls: 0,
-          enablejsapi: 1,
-          loop: 1,
-          rel: 0,
-          showinfo: 0,
-        }
-      });  
-    });
-
-    $scope.$watch('videoData.youtubeUrl', function(newValue, oldValue){
-      if (angular.isDefined(newValue) && (newValue != oldValue)){
-        if (angular.isDefined(oldValue)) delete $scope.videoId;
-        $scope.videoData.youtubeId = getParameterByName($scope.videoData.youtubeUrl, 'v');
-        loadPlayer();
-      }
     });
 
     $timeout(function(){
       if (!$scope.ready) $scope.refreshing=true;
-    }, 2*1000);
-    // $timeout(function(){
-    //   if (!$scope.ready) location.reload();
-    // }, 4*1000);
+    }, 3*1000);
+    $timeout(function(){
+      if (!$scope.ready) location.reload();
+    }, 6*1000);
   });
