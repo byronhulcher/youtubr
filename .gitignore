@@ -1,4 +1,8 @@
 .DS_Store
+.editorconfig
+.gitattributes
+.jshintrc
+notes.txt
 bower_components/
 node_modules/
 tmp/
