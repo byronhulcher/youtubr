@@ -7,6 +7,9 @@ angular.module('byronhulcher.Youtubr')
     $scope.$path = $location.path.bind($location);
     $scope.videoId;
     $scope.editorForm;
+    $scope.videoData;
+    $scope.videoTitle = "";
+    $scope.videoDuration = null;
 
     var getVideo = function(){
       $scope.videoId = $routeParams.videoId;
@@ -21,6 +24,22 @@ angular.module('byronhulcher.Youtubr')
 
     $rootScope.$on('$routeChangeSuccess', getVideo);
 
+    $scope.save = function(){
+      VideoService.create($scope.videoData, function(data){
+        $scope.videoData = data;
+        $scope.videoId = data.id;
+        angular.element('#editor-form').scope().editorForm.$setPristine();
+      })
+    }
+
+    $scope.reset = getVideo;
+  });
+
+angular.module('byronhulcher.Youtubr')
+
+  .controller('VideoCtrl', function($rootScope, $scope, $location, $routeParams, $interval, VideoService){
+    $scope.ready = false;
+
     function onPlayerStateChange(event){
       if (event.data == 0){
         $scope.player.seekTo($scope.videoData.startSeconds);
@@ -28,7 +47,9 @@ angular.module('byronhulcher.Youtubr')
       if (event.data == 1){
         startPlayerInterval();
         $scope.videoTitle = $scope.player.getVideoData().title;
+        $scope.videoData.title = $scope.videoTitle;
         $scope.videoDuration = parseInt($scope.player.getDuration());
+        $scope.videoData.duration = $scope.videoDuration;
       }
       else {
         stopPlayerInterval();
@@ -70,6 +91,7 @@ angular.module('byronhulcher.Youtubr')
         'startSeconds': $scope.videoData.startSeconds, 
         'endSeconds': $scope.videoData.endSeconds
       });
+      $scope.ready = true;
     };
 
     $rootScope.$on('onYouTubeIframeAPIReady', function(){
@@ -99,15 +121,4 @@ angular.module('byronhulcher.Youtubr')
         loadPlayer();
       }
     });
-
-    $scope.save = function(){
-      VideoService.create($scope.videoData, function(data){
-        console.log($scope);
-        $scope.videoData = data;
-        $scope.videoId = data.id;
-        angular.element('#editor-form').scope().editorForm.$setPristine();
-      })
-    }
-
-    $scope.reset = getVideo;
   });
