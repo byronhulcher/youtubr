@@ -25,7 +25,6 @@ angular.module('byronhulcher.Youtubr')
 
       playerInterval = $interval(function() {
         currentTime = $scope.player.getCurrentTime();
-        // console.log(currentTime);
         if (angular.isDefined($scope.videoData.startSeconds) && currentTime < $scope.videoData.startSeconds){
           $scope.player.seekTo($scope.videoData.startSeconds);
         }
@@ -47,7 +46,6 @@ angular.module('byronhulcher.Youtubr')
     })
 
     function loadPlayer(){
-      console.log("loadingPlayer")
       if (!angular.isDefined($scope.player) || !angular.isDefined($scope.player.loadVideoById) || !angular.isDefined($scope.videoData.youtubeId)) return;
       $scope.player.loadVideoById({
         'videoId': $scope.videoData.youtubeId,
@@ -58,7 +56,6 @@ angular.module('byronhulcher.Youtubr')
     };
 
     $rootScope.$on('onYouTubeIframeAPIReady', function(){
-      console.log("onYouTubeIframeAPIReady")
       $scope.player = new YT.Player('videoDiv', {
         width: '420',
         height: '315',
