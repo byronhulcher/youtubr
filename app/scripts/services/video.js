@@ -24,7 +24,6 @@ angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCo
     }
     else {
       data.youtubeId = getParameterByName(data.youtubeUrl, 'v');
-      console.log('Got ',data,' with id ',id);
       successCallback(data);
     };
     
@@ -32,7 +31,6 @@ angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCo
 
   service.create = function(data, successCallback, errorCallback){
     data = VideoCookieStorage.post(data);
-    console.log('Stored ',data,' with id ',data.id);
     successCallback(data);
   };
 
