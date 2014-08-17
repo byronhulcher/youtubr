@@ -31,7 +31,7 @@ GET /video/<video_id>
 http://youtubr.xyz/#/example
 
 ## TODO
-* Cookie Storage
+* ~~Cookie Storage~~
 * Back-end Support
 * Default/blank view
 * Selection bar controls
