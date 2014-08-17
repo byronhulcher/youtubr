@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', function($log) {
+angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCookieStorage', function($log, VideoCookieStorage) {
   var localVideos = {
     'example': {
       'id': 'example',
@@ -15,37 +15,25 @@ angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', function
   service.getLocalVideos = function(){ return localVideos };
 
   service.get = function(id, successCallback, errorCallback){
-    // check localVideos for id
-    //  if exists, successCallback(retreivedObject)
-    // else check remote for id 
-    //  if exists, successCallback(retreivedObject)
-    //  else, errorCallback(errorMessage)
-
-    if (typeof(localVideos[id]) == "undefined"){
-      errorCallback("Unable to find video matching id "+id.toString())
+    var data = localVideos[id];
+    if (!angular.isDefined(data)){
+      data = VideoCookieStorage.get(id);
+    }
+    if (!angular.isDefined(data)){
+      if (angular.isDefined(errorCallback)) errorCallback("Cannot find video matching "+ id.toString());
     }
     else {
-      var data = angular.copy(localVideos[id]);
       data.youtubeId = getParameterByName(data.youtubeUrl, 'v');
+      console.log('Got ',data,' with id ',id);
       successCallback(data);
-    }
+    };
     
   };
 
   service.create = function(data, successCallback, errorCallback){
-    // send post to /video/ with data
-    // if success, add newlyCreatedObject to localVideos then successCallback(newlyCreatedOject)
-    //  else, errorCallback(errorMessage)
-
-    var generateId = function(length){
-      // via http://stackoverflow.com/a/19964557
-      return new Array(length+1).join((Math.random().toString(36)+'00000000000000000').slice(2, 18)).slice(0, length);
-    }
-    var newId = generateId(5);
-    localVideos[newId] = data;
-    localVideos[newId].id = newId;
-    successCallback(angular.copy(localVideos[newId]));
-
+    data = VideoCookieStorage.post(data);
+    console.log('Stored ',data,' with id ',data.id);
+    successCallback(data);
   };
 
   return service;
