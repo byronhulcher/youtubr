@@ -21,7 +21,7 @@ function onYouTubeIframeAPIReady() {
   window.setTimeout(function(){
     var appRootScope = angular.element('#app-container').scope();
     appRootScope.$broadcast('onYouTubeIframeAPIReady');
-  }, (.5*1000));
+  }, (1*1000));
   angular.element('#app-container').ready(function(){
     
   });
