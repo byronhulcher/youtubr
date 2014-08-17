@@ -85,8 +85,8 @@ angular.module('byronhulcher.Youtubr')
 
     $timeout(function(){
       if (!$scope.ready) $scope.refreshing=true;
-    }, 3*1000);
+    }, 1*1000);
     $timeout(function(){
       if (!$scope.ready) location.reload();
-    }, 6*1000);
+    }, 4*1000);
   });
