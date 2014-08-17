@@ -19,6 +19,7 @@ angular.module('byronhulcher.Youtubr')
           $scope.videoData = data;
         },
         function(data){
+          console.log("cannot find ", $scope.videoId);
           $location.path("/example");
         });
     }
@@ -27,6 +28,7 @@ angular.module('byronhulcher.Youtubr')
 
     $scope.save = function(){
       VideoService.create($scope.videoData, function(data){
+        // $location.path("/"+data.id);
         $scope.videoData = data;
         $scope.videoId = data.id;
         angular.element('#editor-form').scope().editorForm.$setPristine();
