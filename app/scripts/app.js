@@ -2,7 +2,7 @@
 
 angular.module('byronhulcher.Youtubr', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'mgcrea.ngStrap'])
 
-  .constant('version', 'v1.0.0')
+  .constant('version', 'v1.0.1')
 
   .config(function($locationProvider, $routeProvider) {
 
