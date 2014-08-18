@@ -54,7 +54,7 @@
           <div class="progress-bar progress-bar-warning" style="width: {{(videoData.startSeconds/videoData.duration)*100.0}}%">
             <!-- {{videoData.startSeconds | secondsToMinutes}} -->
           </div>
-          <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: {{((videoData.endSeconds-videoData.startSeconds)/videoData.duration)*100.0}}%">
+          <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: {{((videoData.endSeconds-videoData.startSeconds)/videoData.duration)*100.0}}%" ng-show="videoData.endSeconds-videoData.startSeconds > 0">
             {{videoData.endSeconds-videoData.startSeconds | secondsToMinutes}}
           </div>
           <div class="progress-bar progress-bar-danger" style="width: {{((videoData.duration-videoData.endSeconds)/videoData.duration)*100.0}}%">
