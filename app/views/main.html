@@ -62,15 +62,18 @@
     </div>
 
     <div class="row"> <!-- 6-8: Start time, youtube link input, End time -->
-      <div class="col-sm-3"> <!-- 6: start time in seconds -->
+      <div class="col-sm-3 form-group"> <!-- 6: start time in seconds -->
+        <label>Start seconds</label>
         <input class="form-control" ng-model-options="{updateOn: 'blur'}" name="startSeconds" ng-model="videoData.startSeconds"></input>
       </div>
 
-      <div class="col-sm-6"> <!-- 7: youtube link input -->
+      <div class="col-sm-6 form-group"> <!-- 7: youtube link input -->
+        <label>Youtube URL (youtubr.com/watch?v=)</label>
         <input class="form-control" ng-model-options="{updateOn: 'blur'}" name="youtubeUrl" ng-model="videoData.youtubeUrl"></input>
       </div>
 
-      <div class="col-sm-3"> <!-- 8: end time in seconds -->
+      <div class="col-sm-3 from-group"> <!-- 8: end time in seconds -->
+        <label>End seconds</label>
         <input class="form-control" ng-model-options="{updateOn: 'blur'}" name="endSeconds" ng-model="videoData.endSeconds"></input>
       </div>
     </div>
