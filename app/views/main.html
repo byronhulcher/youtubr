@@ -2,7 +2,7 @@
   <form id="editor-form" name="editorForm" class="container"> <!-- 2-8: Content -->    
     <div class="row"> <!-- 2-3: Video title & URL/Buttons --> 
       <div class="col-sm-8 h3 videoTitle"> <!-- 2: Video Title -->
-        <a href="https://www.youtube.com/watch?v={{videoData.youtubeId}}" target="_blank" ng-show="videoData.title">
+        <a href="{{videoData.youtubeUrl}}" target="_blank" ng-show="videoData.title">
           {{videoData.title}}
         </a>
         <!-- <div ng-hide="videoData.title">Loading...</div> -->
@@ -68,7 +68,7 @@
       </div>
 
       <div class="col-sm-6 form-group"> <!-- 7: youtube link input -->
-        <label>Youtube URL (youtubr.com/watch?v=)</label>
+        <label>Youtube URL (youtube.com/watch?v=)</label>
         <input class="form-control" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" name="youtubeUrl" ng-model="videoData.youtubeUrl"></input>
       </div>
 
