@@ -16,7 +16,6 @@ angular.module('byronhulcher.Youtubr')
       $scope.player.loadVideoById({
         'videoId': youtubeId,
         'startSeconds': $scope.videoData.startSeconds, 
-        'endSeconds': $scope.videoData.endSeconds
       });
       $scope.ready = true;
     };
