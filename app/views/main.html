@@ -1,24 +1,5 @@
 <div>
   <form id="editor-form" name="editorForm" class="container"> <!-- 2-8: Content -->    
-    <div class="row"> <!-- 2-3: Video title & URL/Buttons --> 
-      <div class="col-sm-8 h3 videoTitle"> <!-- 2: Video Title -->
-        <a href="{{videoData.youtubeUrl}}" target="_blank" ng-show="videoData.title">
-          {{videoData.title}}
-        </a>
-        <!-- <div ng-hide="videoData.title">Loading...</div> -->
-      </div> 
-      <div class="col-sm-4" ng-show="editorForm.$pristine"> <!-- 3: Sharable shortURL -->
-        <input class="form-control" name="shortURL" value="http://youtubr.xyz/#/{{videoId}}" readonly></input>
-      </div>
-      <div class="col-sm-2" ng-show="editorForm.$dirty"><!-- 3: Save button --> 
-        <a class="btn btn-success btn-block col-sm-2" ng-click="save()">Save</a> 
-      </div>
-      
-      <div class="col-sm-2" ng-show="editorForm.$dirty"><!-- 3: Reset button --> 
-        <a class="btn btn-danger btn-block col-sm-2" ng-click="reset()">Reset</a> 
-      </div>
-    </div>
-    
     <div class="row"> <!-- 4: Youtube iFrame embed --> 
       <div class="col-sm-12">
         <div class="videoWrapper" ng-controller="VideoCtrl">
@@ -42,6 +23,25 @@
           <br>
 
         </div>
+      </div>
+    </div>
+    
+    <div class="row"> <!-- 2-3: Video title & URL/Buttons --> 
+      <div class="col-sm-8 h3 videoTitle"> <!-- 2: Video Title -->
+        <a href="{{videoData.youtubeUrl}}" target="_blank" ng-show="videoData.title">
+          {{videoData.title}}
+        </a>
+        <!-- <div ng-hide="videoData.title">Loading...</div> -->
+      </div> 
+      <div class="col-sm-4" ng-show="editorForm.$pristine"> <!-- 3: Sharable shortURL -->
+        <input class="form-control" name="shortURL" value="http://youtubr.xyz/#/{{videoId}}" readonly></input>
+      </div>
+      <div class="col-sm-2" ng-show="editorForm.$dirty"><!-- 3: Save button --> 
+        <a class="btn btn-success btn-block col-sm-2" ng-click="save()">Save</a> 
+      </div>
+      
+      <div class="col-sm-2" ng-show="editorForm.$dirty"><!-- 3: Reset button --> 
+        <a class="btn btn-danger btn-block col-sm-2" ng-click="reset()">Reset</a> 
       </div>
     </div>
     
