@@ -7,9 +7,12 @@
             <div id="videoDiv">
             </div>
           </div>
-          <div class="jumbotron" ng-hide="ready || error">
+          <div class="jumbotron" ng-hide="ready || error || refreshing">
+            <h1>LOADING...</h1>
+            <p>{{videoData.youtubeUrl}}</p>
+          </div>
+          <div class="jumbotron" ng-show="refreshing">
             <h1 ng-show="refreshing">REFRESHING...</h1>
-            <h1 ng-hide="refreshing">LOADING...</h1>
             <p>Sometimes, YT.player doesn't fire the onReady event...</p>
           </div>
           <div class="jumbotron" ng-show="error">
