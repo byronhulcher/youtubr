@@ -8,13 +8,13 @@ See the API Server code at http://github.com/byronhulcher/yserver
 ![alt text](https://i.imgur.com/8aZqa6Z.jpg "Napkin drawing")
 
 ## Production Screenshot
-![alt text](https://i.imgur.com/PxIIZrD.png "Production Screenshot")
+![alt text](https://i.imgur.com/GYiaMVG.png "Production Screenshot")
 
 ## Relevant Technologies
 * Angular JS - http://docs.angularjs.org/api 
 * Bootstrap CSS - http://getbootstrap.com/
 * LESS CSS - http://lesscss.org/ 
-* Youtube Player API - http://developers.google.com/youtube/js_api_reference 
+* YouTube iframe API - http://developers.google.com/youtube/iframe_api_reference
 * Grunt - http://gruntjs.com/ 
 * Yeoman - http://yeoman.io/
 
