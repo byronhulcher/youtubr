@@ -26,7 +26,6 @@ angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCo
       if (angular.isDefined(errorCallback)) errorCallback("Cannot find video matching "+ id.toString());
     }
     else {
-      data.youtubeId = getParameterByName(data.youtubeUrl, 'v');
       successCallback(data);
     };
     

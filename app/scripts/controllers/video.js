@@ -5,15 +5,16 @@ angular.module('byronhulcher.Youtubr')
     $scope.$watch('videoData.youtubeUrl', function(newValue, oldValue){
       if (angular.isDefined(newValue) && (newValue != oldValue)){
         if (angular.isDefined(oldValue)) delete $scope.videoId;
-        $scope.videoData.youtubeId = getParameterByName($scope.videoData.youtubeUrl, 'v');
         loadPlayer();
       }
     });
 
     function loadPlayer(){
-      if (!angular.isDefined($scope.player) || !angular.isDefined($scope.player.loadVideoById) || !angular.isDefined($scope.videoData) || !angular.isDefined($scope.videoData.youtubeId)) return;
+      if (!angular.isDefined($scope.player) || !angular.isDefined($scope.player.loadVideoById) || !angular.isDefined($scope.videoData) || !angular.isDefined($scope.videoData.youtubeUrl)) return;
+      var youtubeId = getParameterByName($scope.videoData.youtubeUrl, 'v');
+        
       $scope.player.loadVideoById({
-        'videoId': $scope.videoData.youtubeId,
+        'videoId': youtubeId,
         'startSeconds': $scope.videoData.startSeconds, 
         'endSeconds': $scope.videoData.endSeconds
       });
@@ -24,7 +25,6 @@ angular.module('byronhulcher.Youtubr')
       $scope.player = new YT.Player('videoDiv', {
         width: '420',
         height: '315',
-        // videoId: $scope.videoData.youtubeId,
         events: {
           'onReady': loadPlayer,
           'onStateChange': onPlayerStateChange,
@@ -85,8 +85,8 @@ angular.module('byronhulcher.Youtubr')
 
     $timeout(function(){
        if ((!$scope.ready) && $scope.videoData) $scope.refreshing=true;
-    }, 1*1000);
+    }, 3*1000);
     $timeout(function(){
       if ((!$scope.ready) && $scope.videoData) location.reload();
-    }, 4*1000);
+    }, 5*1000);
   });
