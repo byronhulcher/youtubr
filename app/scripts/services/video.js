@@ -6,7 +6,7 @@ angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCo
       '_id': 'example',
       'youtubeUrl': 'https://www.youtube.com/watch?v=bLlj_GeKniA',
       'startSeconds': 5,
-      'endSeconds': 11
+      'endSeconds': 21
     }
   };
 
