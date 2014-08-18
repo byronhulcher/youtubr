@@ -52,7 +52,7 @@
             <!-- {{videoData.startSeconds | secondsToMinutes}} -->
           </div>
           <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: {{((videoData.endSeconds-videoData.startSeconds)/videoData.duration)*100.0}}%">
-            <!-- {{videoData.endSeconds-videoData.startSeconds | secondsToMinutes}} -->
+            {{videoData.endSeconds-videoData.startSeconds | secondsToMinutes}}
           </div>
           <div class="progress-bar progress-bar-danger" style="width: {{((videoData.duration-videoData.endSeconds)/videoData.duration)*100.0}}%">
             <!-- {{videoDuration-videoData.endSeconds | secondsToMinutes}} -->
