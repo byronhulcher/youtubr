@@ -17,10 +17,9 @@ angular.module('byronhulcher.Youtubr')
       VideoService.get($scope.videoId, 
         function(data){
           $scope.videoData = data;
+          $scope.backupData = angular.copy(data);
         },
         function(data){
-          // console.log("Cannot find video data matching id ", $scope.videoId, " re-routing to /example");
-          // $location.path("/example");
           $scope.error = true;
         });
     }
@@ -36,5 +35,7 @@ angular.module('byronhulcher.Youtubr')
       })
     }
 
-    $scope.reset = getVideo;
+    $scope.reset = function(){
+      angular.extend($scope.videoData, $scope.backupData);
+    }
   });
