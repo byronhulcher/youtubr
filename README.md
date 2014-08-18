@@ -2,6 +2,8 @@
 
 Check http://youtubr.xyz for the latest release!
 
+See the API Server code at http://github.com/byronhulcher/yserver
+
 ![alt text](https://i.imgur.com/8aZqa6Z.jpg "Napkin drawing")
 
 ![alt text](http://i.imgur.com/QIr6GH7.png "Static mock-up")
