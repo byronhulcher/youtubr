@@ -33,7 +33,6 @@ angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCo
 
   service.create = function(data, successCallback, errorCallback){
     var id = VideoRemoteAPI.post(data);
-    console.log("got id", id)
     data = VideoCookieStorage.post(data, id);
     successCallback(data);
   };
