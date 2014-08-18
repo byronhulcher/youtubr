@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCookieStorage', function($log, VideoCookieStorage) {
+angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCookieStorage', 'VideoRemoteAPI', function($log, VideoCookieStorage, VideoRemoteAPI) {
   var localVideos = {
     'example': {
       'id': 'example',
@@ -20,6 +20,9 @@ angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCo
       data = VideoCookieStorage.get(id);
     }
     if (!angular.isDefined(data)){
+      data = VideoRemoteAPI.get(id);
+    }
+    if (!angular.isDefined(data)){
       if (angular.isDefined(errorCallback)) errorCallback("Cannot find video matching "+ id.toString());
     }
     else {
@@ -30,7 +33,9 @@ angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCo
   };
 
   service.create = function(data, successCallback, errorCallback){
-    data = VideoCookieStorage.post(data);
+    var id = VideoRemoteAPI.post(data);
+    console.log("got id", id)
+    data = VideoCookieStorage.post(data, id);
     successCallback(data);
   };
 

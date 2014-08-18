@@ -26,10 +26,15 @@
             <div id="videoDiv">
             </div>
           </div>
-          <div class="jumbotron" ng-hide="ready">
+          <div class="jumbotron" ng-hide="ready || error">
             <h1 ng-show="refreshing">REFRESHING...</h1>
             <h1 ng-hide="refreshing">LOADING...</h1>
             <p>Sometimes, YT.player doesn't fire the onReady event...</p>
+          </div>
+          <div class="jumbotron" ng-show="error">
+            <h1>ERROR</h1>
+            <p>Unfortunately, we couldn't match the short url <strong>/{{videoId}}</strong></p>
+            <p>Return to <a href="#/example">/example</a></p>
           </div>
         </div>
         <div class="hidden">

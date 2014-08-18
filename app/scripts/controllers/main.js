@@ -19,8 +19,9 @@ angular.module('byronhulcher.Youtubr')
           $scope.videoData = data;
         },
         function(data){
-          console.log("Cannot find video data matching id ", $scope.videoId, " re-routing to /example");
-          $location.path("/example");
+          // console.log("Cannot find video data matching id ", $scope.videoId, " re-routing to /example");
+          // $location.path("/example");
+          $scope.error = true;
         });
     }
 

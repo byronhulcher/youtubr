@@ -11,7 +11,7 @@ angular.module('byronhulcher.Youtubr')
     });
 
     function loadPlayer(){
-      if (!angular.isDefined($scope.player) || !angular.isDefined($scope.player.loadVideoById) || !angular.isDefined($scope.videoData.youtubeId)) return;
+      if (!angular.isDefined($scope.player) || !angular.isDefined($scope.player.loadVideoById) || !angular.isDefined($scope.videoData) || !angular.isDefined($scope.videoData.youtubeId)) return;
       $scope.player.loadVideoById({
         'videoId': $scope.videoData.youtubeId,
         'startSeconds': $scope.videoData.startSeconds, 
@@ -84,9 +84,9 @@ angular.module('byronhulcher.Youtubr')
     });
 
     $timeout(function(){
-      if (!$scope.ready) $scope.refreshing=true;
+       if ((!$scope.ready) && $scope.videoData) $scope.refreshing=true;
     }, 1*1000);
     $timeout(function(){
-      if (!$scope.ready) location.reload();
+      if ((!$scope.ready) && $scope.videoData) location.reload();
     }, 4*1000);
   });

@@ -19,7 +19,7 @@ http://youtubr.xyz/#/example
 
 ## TODO
 * ~~Cookie Storage~~
-* Back-end Support
+* ~~Back-end Support~~
 * Default/blank view
 * Selection bar controls
 * Minutes:Seconds inputs
