@@ -13,8 +13,8 @@ angular.module('byronhulcher.Youtubr').factory('VideoCookieStorage', ['$log', '$
       // via http://stackoverflow.com/a/19964557
       return new Array(length+1).join((Math.random().toString(36)+'00000000000000000').slice(2, 18)).slice(0, length);
     }
-    data.id = angular.isDefined(id) ? id : generateId(5);
-    $cookieStore.put(data.id, data);
+    data["_id"] = angular.isDefined(id) ? id : generateId(5);
+    $cookieStore.put(data["_id"], data);
     return data;
   };
 

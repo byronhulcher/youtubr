@@ -3,7 +3,7 @@
 angular.module('byronhulcher.Youtubr').factory('VideoService', ['$log', 'VideoCookieStorage', 'VideoRemoteAPI', function($log, VideoCookieStorage, VideoRemoteAPI) {
   var localVideos = {
     'example': {
-      'id': 'example',
+      '_id': 'example',
       'youtubeUrl': 'https://www.youtube.com/watch?v=bLlj_GeKniA',
       'startSeconds': 5,
       'endSeconds': 11
