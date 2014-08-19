@@ -45,10 +45,8 @@ angular.module('byronhulcher.Youtubr')
       }
       if (event.data == 1){
         startPlayerInterval();
-        $scope.videoTitle = $scope.player.getVideoData().title;
-        $scope.videoData.title = $scope.videoTitle;
-        $scope.videoDuration = parseInt($scope.player.getDuration());
-        $scope.videoData.duration = $scope.videoDuration;
+        $scope.videoData.title = $scope.player.getVideoData().title;
+        $scope.videoData.duration = parseInt($scope.player.getDuration());
       }
       else {
         stopPlayerInterval();

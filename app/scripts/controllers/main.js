@@ -8,9 +8,7 @@ angular.module('byronhulcher.Youtubr')
     $scope.videoId;
     $scope.editorForm;
     $scope.videoData;
-    $scope.videoTitle = "";
-    $scope.videoDuration = null;
-
+    
     var getVideo = function(){
       $scope.videoId = $routeParams.videoId;
       if (!angular.isDefined($scope.videoId)) return;
@@ -27,6 +25,7 @@ angular.module('byronhulcher.Youtubr')
     $rootScope.$on('$routeChangeSuccess', getVideo);
 
     $scope.save = function(){
+      delete $scope.videoData["_id"];
       VideoService.create($scope.videoData, function(data){
         $scope.videoData = data;
         $scope.videoId = data["_id"];
