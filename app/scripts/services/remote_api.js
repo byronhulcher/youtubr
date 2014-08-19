@@ -30,8 +30,6 @@ angular.module('byronhulcher.Youtubr').factory('VideoRemoteAPI', ['$log', functi
       return response;
     }
     catch(err){
-      console.log("Unable to GET from " + methodUrl)
-      console.log(err)
     }
   };
 
@@ -46,8 +44,6 @@ angular.module('byronhulcher.Youtubr').factory('VideoRemoteAPI', ['$log', functi
       return response["_id"];
     }
     catch(err){
-      console.log("Unable to POST to " + methodUrl)
-      console.log(err)
     }
   };
 
